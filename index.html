@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />    
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="format-detection" content="telephone=yes"/>
+<meta name="msapplication-tap-highlight" content="no" />
+<title>案例一号</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<!-- <script type="text/javascript" src="jquery.SuperSlide.2.1.1.js"></script> -->
+<script type="text/javascript" src="TouchSlide.1.1.js"></script>
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="jquery.sliphover.min.js"></script>
+<!-- <script type="text/javascript" src="jquery1.42.min.js"></script> -->
+<script type="text/javascript" src="jquery.SuperSlide.2.1.1.source.js"></script>
+
+</head>
+<body>
+<div class="head">
+	<div class="top">
+		<div class="logo">
+			<a href="#"><img src="img/logo.png"></a>
+		</div>
+		<div class="wenzi">
+			<a href="#"><img src="img/logozi.png"></a>
+		</div>
+		<div style="display: none;position: absolute;top: 0;right: 2%;" class="zr">
+			<div><img src="img/zz.png"></div>
+		</div>
+	</div>
+	<div class="fixed">
+		<ul>
+			<a href="#"><li>网站首页</li></a>
+			<a href="#"><li>关于我们</li></a>
+			<a href="#"><li>售房中心</li></a>
+			<a href="#"><li>案例展示</li></a>
+			<a href="#"><li>新闻中心</li></a>
+			<a href="#"><li>加入我们</li></a>
+			<a href="#"><li>联系我们</li></a>
+		</ul>
+	</div>
+	<script type="text/javascript">
+	$(".zr").click(function(){
+		if($(".fixed").css('display')=='none'){
+			$(this).css('display')=='block';
+			$(".fixed").stop().slideDown();
+		}else{
+			$(this).css('display')=='none';
+			$(".fixed").stop().slideUp();
+		}
+		
+	});
+	
+	$(document).scroll(function(){
+		$(".fixed").hide();
+		// $(".zr").removeClass('on');
+	})
+    </script>
+
+	<div class="nav cf">
+		<ul class="nav_list cf">
+			<li>
+			    <a href="#" class="active zz">网站首页</a>
+                <ul class="cf oul">
+                	<li><a href="#">网站首页</a></li>
+                	<li><a href="#">网站首页</a></li>
+                	<li><a href="#">网站首页</a></li>
+                </ul>
+			</li>
+			<li>
+			    <a href="#" class="zz">关于我们</a>
+                <ul class="cf oul">
+                	<li><a href="#">关于我们</a></li>
+                	<li><a href="#">关于我们</a></li>
+                	<li><a href="#">关于我们</a></li>
+                </ul>
+			</li>
+			<li>
+			   <a href="#" class="zz">售房中心</a>
+               <ul class="cf oul">
+                	<li><a href="#">售房中心</a></li>
+                	<li><a href="#">售房中心</a></li>
+                	<li><a href="#">售房中心</a></li>
+                </ul>
+			   </li>
+			<li><a href="#" class="zz">案例展示</a>
+			<ul class="cf oul">
+                	<li><a href="#">案例展示</a></li>
+                	<li><a href="#">案例展示</a></li>
+                	<li><a href="#">案例展示</a></li>
+                </ul></li>
+			<li><a href="#" class="zz">新闻中心</a><ul class="cf oul">
+                	<li><a href="#">新闻中心</a></li>
+                	<li><a href="#">新闻中心</a></li>
+                	<li><a href="#">新闻中心</a></li>
+                </ul></li>
+			<li><a href="#" class="zz">加入我们</a><ul class="cf oul">
+                	<li><a href="#">加入我们</a></li>
+                	<li><a href="#">加入我们</a></li>
+                	<li><a href="#">加入我们</a></li>
+                </ul></li>
+			<li>
+			    <a href="#" class="zz">联系我们</a>
+			    <ul class="cf oul">
+                	<li><a href="#">联系我们</a></li>
+                	<li><a href="#">联系我们</a></li>
+                	<li><a href="#">联系我们</a></li>
+                </ul></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var aA=document.getElementsByClassName("zz");
+		var aUl=document.getElementsByClassName("oul");
+		var aActive=document.getElementsByClassName("active");
+        for(var i=0;i<aA.length;i++){
+        	aA[i].index=i;
+        	aA[i].onmouseover=function(){
+        		for(var j=0;j<aA.length;j++){
+        			if((aA[j].className.toString()).indexOf("active")!=-1){
+        				this.className+="zz";
+        			}else{
+        			aA[j].className="zz";
+        			aUl[j].style.display="none";}
+        		}
+            this.className+=" active";
+            aUl[this.index].style.display="block";
+        	}
+        	aA[i].onmouseout=function(){
+        		if(aActive.length>1){
+        		this.className="";
+        		aUl[this.index].style.display="none";}
+        		else{
+        			this.className="active";
+        			aUl[this.index].style.display="none";
+        		}
+        	}
+        	aUl[i].onmouseover=function(){
+        		this.style.display="block";
+        		this.parentNode.children[0].className="active";
+        		//alert(this.parentNode.children[0].className);
+        	}
+        	aUl[i].onmouseout=function(){
+        		this.style.display="none";
+        		this.parentNode.children[0].className="";
+        	}
+        }
+	</script>
+	<!-- <div id="wap_banner" class="banner">
+			<div class="hd">
+				<ul></ul>
+			</div>
+			<div class="bd">
+				<div class="tempWrap" style="overflow:hidden; position:relative;">
+					<ul style="/*display:none;*/" id="bd_ul">
+						<li>
+							<a href="javascript:view(0)"><img src="img/banner.png" /></a>
+						</li>
+						<li>
+							<a href="/zt/gyzj"><img src="img/banner.png" /></a>
+						</li>
+						<li>
+							<a href="/zt/zhuanjia2/"><img src="img/banner.png" /></a>
+						</li>
+						<li>
+							<a href="javascript:view(0)"><img src="img/banner.png"/></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div> -->
+
+	<script type="text/javascript">
+	// TouchSlide({
+	// slideCell:"#wap_banner",
+	// titCell:".hd ul",
+	// mainCell:".bd ul",
+	// effect:"leftLoop",
+	// autoPlay:true,
+	// autoPage:true,
+	// });
+</script>
+<div class="banner" >
+    <div class="pcBan">
+    <div class="bd">
+        <ul>
+						<li><a href="#" target="_blank"> 
+				<img src="img/banner.png" height="" class="pcimg"/>
+			</a></li>
+						<li><a href="#" target="_blank"> 
+				<img src="img/banner.png" height="" class="pcimg"/>
+			</a></li>
+						<li><a href="#" target="_blank"> 
+				<img src="img/banner.png" height="" class="pcimg"/>
+			</a></li>
+			        </ul>
+    </div>
+	<div class="hd">
+		<ul></ul>
+	</div>
+	</div>
+
+	<div class="phBan" id="slideBox" >
+		<div class="hd">
+			<ul></ul>
+		</div>
+		<div class="bd" >
+			<ul>
+									<li><a href="#" target="_blank"><img src="img/banner_sj.png" alt="bbb" /></a></li>
+										<li><a href="#" target="_blank"><img src="img/banner_sj.png" alt="banner" /></a></li>
+										<li><a href="#" target="_blank"><img src="img/banner_sj.png" alt="3bbb" /></a></li>
+								</ul>
+		</div>
+	</div>
+	
+</div>
+
+<script type="text/javascript">
+	var Winwidth=$(window).width();
+
+		jQuery(".pcBan").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,autoPlay:true});
+
+		TouchSlide({ 
+			slideCell:"#slideBox",
+			titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+			mainCell:".bd ul", 
+			effect:"leftLoop", 
+			autoPage:true //自动分页
+		});
+</script>
+
+</div>
+<div class="main">
+	<div class="part1">
+		<div class="part1_top">
+			<h1>德恒控股集团</h1>
+			<p>诚信筑就品质丨创新引领未来</p>
+		</div>
+		<div class="part1_bottom cf">
+			<div class="part1_bl">
+				<a href="#">
+					<img src="img/pic1.png">
+				</a>
+			</div>
+			<div  class="part1_br">
+				<P>安徽德恒控股集团有限公司（以下简称集团公司）是以长三角地区为重点发展
+				区域并持续向全国其它区域辐射的综合性、创新型企业，注册资本金5亿元人民币。</P>
+				<p>集团公司旗下现拥有全资及控股企业4家，分别为：“安徽德恒投资有限公司”、
+				“安徽德恒众联云渠道地产销售有限公司”、“淮北市新中原置业发展有限责任公司
+				”、“徐州百惠家美时商业发展有限公司”。即将控股及参股的企业有6家，分别为：
+				“安徽博函科教文化有限公司”、“淮北市新中原商业发展有限责任公司”、“淮北
+				市新中原物业管理有限公司”、“江苏百惠家美时投资有限公司、”“徐州百鑫商业
+				发展有限公司”、“徐州百惠家美时酒店管理有限公司”。</p>
+				<p>集团公司现拥有员工500多人，其中高级管理人才80多人，高级工程师30多人，
+				其中包括多名来自深圳、福建等沿海地区知名企业的中高级管理人才，为企业铸就了
+				一支身经百战的销售、管理团队、资深专业的招商、策划... <span>MORE>></span></p>
+			</div>
+		</div>
+	</div>
+	<div class="part2">
+		<a href="#">
+			<img src="img/pic2.png">
+		</a>
+	</div>
+	<div class="part3">
+		<div class="part1_top part3_top">
+			<h1>德恒控股案例展示</h1>
+			<p>用思想圈地，12年砥砺，40多个典范。</p>
+		</div>
+		<div class="case" id="hover">
+			<ul class="cf">
+				<li>
+					<a href="#">
+						<img src="img/pic3.png" title="东方汇购物中心,商铺大甩卖！！一块钱一平米，一块钱一平米一块钱一平米">
+						<p>东方汇购物中心</p>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/pic4.png" title="东方汇购物中心,商铺大甩卖！">
+						<p>东方汇购物中心</p>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/pic5.png" title="东方汇购物中心,商铺大甩卖！！一块钱一平米，一块钱一平米一块钱一平米">
+						<p>东方汇购物中心</p>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/pic6.png" title="东方汇购物中心,商铺大甩卖！！一块钱一平米，一块钱一平米">
+						<p>东方汇购物中心</p>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/pic7.png" title="东方汇购物中心,商铺大甩卖！！">
+						<p>东方汇购物中心</p>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="img/pic8.png" title="东方汇购物中心,商铺大甩卖！！一块钱一平米，">
+						<p>东方汇购物中心</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(e) {
+		    $('#hover').sliphover({
+				backgroundColor:'rgba(208,0,14,0.7)',
+			});
+		});
+	</script>
+</div>
+<div class="part4">
+	<div class="part1_top part3_top part4_top">
+		<h1>新闻资讯</h1>
+	</div>
+	<div class="part4bg">
+		<div class="part4_main main cf">
+			<div class="pm1">
+				<div class="pm1_top">
+					<h2>项目动态</h2>
+					<span>MORE>></span>
+					<i></i>
+				</div>
+				<div class="pm1_list">
+					<a href="#"><p>>【南华·东郡一品】桃花潭路之上，再煌</p></a>
+					<a href="#"><p>>【永盛花园】女神节，给你“家”倍煌</p></a>
+					<a href="#"><p>>【三潭音悦】2月10日 三潭音悦学府的</p></a>
+					<a href="#"><p>>【三潭音悦】据说芜湖人2018年的所发</p></a>
+					<a href="#"><p>>【永盛花园】永盛花园10月工程进度 </p></a>
+				</div>
+			</div>
+			<div class="pm1">
+				<div class="pm1_top">
+					<h2>市场动态</h2>
+					<span>MORE>></span>
+					<i></i>
+				</div>
+				<div class="pm1_list">
+					<a href="#"><p>>【南华·东郡一品】桃花潭路之上造复</p></a>
+					<a href="#"><p>>【永盛花园】女神节，给你“家”倍宠声</p></a>
+					<a href="#"><p>>【三潭音悦】2月10日 三潭音悦复的</p></a>
+					<a href="#"><p>>【三潭音悦】据说芜湖人2018年的所发</p></a>
+					<a href="#"><p>>【永盛花园】永盛花园10月工程进度 发</p></a>
+				</div>
+			</div>
+			<div class="pm1">
+				<div class="pm1_top">
+					<h2>公司动态</h2>
+					<span>MORE>></span>
+					<i></i>
+				</div>
+				<div class="pm1_list">
+					<a href="#"><p>>【南华·东郡一品】桃花潭路之上，史</p></a>
+					<a href="#"><p>>【永盛花园】女神节，给你“家”倍大</p></a>
+					<a href="#"><p>>【三潭音悦】2月10日 三潭音悦学府</p></a>
+					<a href="#"><p>>【三潭音悦】据说芜湖人2018年的发</p></a>
+					<a href="#"><p>>【永盛花园】永盛花园10月工程进发</p></a>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+		window.onload=function (){
+			var obj=document.getElementsByClassName('part4_main')[0];
+			var news=obj.getElementsByTagName('p');
+
+			for(var i=0;i<news.length;i++){
+				news[i].onmouseover=function (){
+					this.className="on";
+				}
+				news[i].onmouseout=function (){
+					this.className="";
+				}
+			}
+		}
+		</script>
+	</div>
+</div>
+<div class="foot">
+	<div class="nav cf">
+		<ul class="nav_list cf">
+			<li><a href="#">网站首页</a></li>
+			<li><a href="#">关于我们</a></li>
+			<li><a href="#">售房中心</a></li>
+			<li><a href="#">案例展示</a></li>
+			<li><a href="#">新闻中心</a></li>
+			<li><a href="#">加入我们</a></li>
+			<li><a href="#">联系我们</a></li>
+		</ul>
+	</div>
+	<div class="copyright">
+		<div>
+			<p>安徽德恒控股集团有限公司 版权所有 © 2017 All Rights Reserved</p>
+			<p>联系地址：合肥市滨湖西藏路与杭州路交口东南角</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>
